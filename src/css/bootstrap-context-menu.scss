@@ -1,0 +1,25 @@
+@use "sass:math";
+
+// Context Menu Styles
+.bs-ctx-menu {
+  --bs-ctx-menu-size: calc(var(--bs-dropdown-font-size) / 2);
+
+  .bs-ctx-has-submenu {
+    position: relative;
+
+    > a {
+      &::after {
+        content: "";
+        display: inline-block;
+        width: var(--bs-ctx-menu-size);
+        height: var(--bs-ctx-menu-size);
+        border: solid #212529;
+        border-width: 0.15em 0.15em 0 0;
+        position: absolute;
+        right: var(--bs-ctx-menu-size);
+        top: 50%;
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+  }
+}

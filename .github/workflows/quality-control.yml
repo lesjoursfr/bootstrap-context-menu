@@ -1,0 +1,66 @@
+name: QC Checks
+
+on:
+  push:
+    branches: [main, renovate/**]
+  pull_request:
+    branches: [main, renovate/**]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  checks:
+    name: QC Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - run: corepack enable
+      - name: Use Node.js 24
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6
+        with:
+          node-version: "24.13.1"
+          package-manager-cache: false
+
+      - name: Install
+        run: |
+          yarn config set enableImmutableInstalls false
+          yarn install
+
+      - name: ESLint checks
+        run: npm run eslint-check
+
+      - name: Stylelint checks
+        run: npm run stylelint-check
+
+      - name: Prettier checks
+        run: npm run prettier-check
+
+  tests:
+    name: Tests Node.js ${{ matrix.node-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x, 24.x]
+
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+
+      - run: corepack enable
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6
+        with:
+          node-version: ${{ matrix.node-version }}
+          package-manager-cache: false
+
+      - name: Install
+        run: |
+          yarn config set enableImmutableInstalls false
+          yarn install
+
+      - name: Build project
+        run: npm run build

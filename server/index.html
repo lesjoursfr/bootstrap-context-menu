@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr" style="height: 1000px">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bootstrap Context Menu</title>
+
+		<link rel="stylesheet" href="/fontawesome/css/all.min.css" />
+		<link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/bootstrap-context-menu.css" />
+		<script type="text/javascript" src="/popperjs/popper.min.js"></script>
+		<script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/bootstrap-context-menu.js"></script>
+	</head>
+
+	<body>
+		<div class="container text-center">
+			<div class="my-5">
+				<h1>Bootstrap Context Menu</h1>
+			</div>
+
+			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-5">
+				<div class="col">
+					<h3>Simple menu</h3>
+					<button type="button" class="btn btn-primary js-bs-ctx-menu-1">Right click here</button>
+					<script type="text/javascript">
+						new BootstrapContextMenu({
+							selector: ".js-bs-ctx-menu-1",
+							items: {
+								red: { name: "Red" },
+								green: { icon: "fa-solid fa-anchor", name: "Green" },
+								blue: { name: "Blue" },
+							},
+							callback: (key, event) => {
+								// Handle menu item click
+								document.querySelector(".js-bs-ctx-debug").textContent =
+									`Clicked on menu item with key: ${key} [ts: ${Date.now()}]`;
+							},
+						});
+					</script>
+				</div>
+
+				<div class="col">
+					<h3>Menu with submenu</h3>
+					<button type="button" class="btn btn-primary js-bs-ctx-menu-2">Right click here</button>
+					<script type="text/javascript">
+						new BootstrapContextMenu({
+							selector: ".js-bs-ctx-menu-2",
+							items: {
+								red: { name: "Red" },
+								green: {
+									icon: "fa-solid fa-anchor",
+									name: "Green",
+									items: {
+										lightGreen: { icon: "fa-solid fa-anchor", name: "Light Green" },
+										darkGreen: { name: "Dark Green" },
+									},
+								},
+								blue: { name: "Blue" },
+							},
+							callback: (key, event) => {
+								// Handle menu item click
+								document.querySelector(".js-bs-ctx-debug").textContent =
+									`Clicked on menu item with key: ${key} [ts: ${Date.now()}]`;
+							},
+						});
+					</script>
+				</div>
+
+				<div class="col">
+					<h3>Menu with a builder function</h3>
+					<button type="button" class="btn btn-primary js-bs-ctx-menu-3">Right click here</button>
+					<script type="text/javascript">
+						new BootstrapContextMenu({
+							selector: ".js-bs-ctx-menu-3",
+							builder: (event) => {
+								return {
+									red: { name: "Red" },
+									green: { icon: "fa-solid fa-anchor", name: "Green" },
+									blue: { name: "Blue" },
+								};
+							},
+							callback: (key, event) => {
+								// Handle menu item click
+								document.querySelector(".js-bs-ctx-debug").textContent =
+									`Clicked on menu item with key: ${key} [ts: ${Date.now()}]`;
+							},
+						});
+					</script>
+				</div>
+			</div>
+			<div class="row row-cols-1 g-5 mt-5">
+				<div class="col js-bs-ctx-debug"></div>
+			</div>
+		</div>
+	</body>
+</html>
