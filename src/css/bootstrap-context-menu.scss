@@ -13,8 +13,9 @@
         display: inline-block;
         width: var(--bs-ctx-menu-size);
         height: var(--bs-ctx-menu-size);
-        border: solid #212529;
-        border-width: 0.15em 0.15em 0 0;
+        border: 0.15em solid var(--bs-dropdown-link-color);
+        border-bottom-width: 0;
+        border-left-width: 0;
         position: absolute;
         right: var(--bs-ctx-menu-size);
         top: 50%;
