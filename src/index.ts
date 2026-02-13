@@ -19,7 +19,7 @@ export type BootstrapContextMenuOptions = {
   selector: string;
   items?: BootstrapContextMenuItems;
   builder?: (this: BootstrapContextMenu, event: PointerEvent) => BootstrapContextMenuItems;
-  callback: (this: BootstrapContextMenu, key: string, event: PointerEvent) => void;
+  callback: (this: BootstrapContextMenu, key: string, opener: HTMLElement) => void;
   events?: {
     show?: (this: BootstrapContextMenu) => void;
     hide?: (this: BootstrapContextMenu) => void;
@@ -30,7 +30,7 @@ export class BootstrapContextMenu {
   public readonly selector: string;
   private readonly items?: BootstrapContextMenuItems;
   private readonly builder?: (this: BootstrapContextMenu, event: PointerEvent) => BootstrapContextMenuItems;
-  private readonly callback: (this: BootstrapContextMenu, key: string, event: PointerEvent) => void;
+  private readonly callback: (this: BootstrapContextMenu, key: string, opener: HTMLElement) => void;
   private readonly onShow?: (this: BootstrapContextMenu) => void;
   private readonly onHide?: (this: BootstrapContextMenu) => void;
   private readonly menuId: string;
@@ -78,6 +78,9 @@ export class BootstrapContextMenu {
     if (!items) {
       return;
     }
+
+    // Save the opener element reference for use in the callback
+    const opener = event.target as HTMLElement;
 
     // Create the menu element
     this.menuElement = this.renderMenuItems(items);
@@ -131,7 +134,7 @@ export class BootstrapContextMenu {
         return;
       }
 
-      this.callback(key, event as PointerEvent);
+      this.callback(key, opener);
       this.hide(event as PointerEvent);
     });
 
