@@ -23,7 +23,7 @@ new BootstrapContextMenu({
 	items: {
 		// Define your menu items here
 	},
-	callback: (key, event) => {
+	callback: (key, opener) => {
 		// Handle menu item click
 	},
 });

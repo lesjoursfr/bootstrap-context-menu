@@ -32,7 +32,7 @@
 								green: { icon: "fa-solid fa-anchor", name: "Green" },
 								blue: { name: "Blue" },
 							},
-							callback: (key, event) => {
+							callback: (key, opener) => {
 								// Handle menu item click
 								document.querySelector(".js-bs-ctx-debug").textContent =
 									`Clicked on menu item with key: ${key} [ts: ${Date.now()}]`;
@@ -59,7 +59,7 @@
 								},
 								blue: { name: "Blue" },
 							},
-							callback: (key, event) => {
+							callback: (key, opener) => {
 								// Handle menu item click
 								document.querySelector(".js-bs-ctx-debug").textContent =
 									`Clicked on menu item with key: ${key} [ts: ${Date.now()}]`;
@@ -81,7 +81,7 @@
 									blue: { name: "Blue" },
 								};
 							},
-							callback: (key, event) => {
+							callback: (key, opener) => {
 								// Handle menu item click
 								document.querySelector(".js-bs-ctx-debug").textContent =
 									`Clicked on menu item with key: ${key} [ts: ${Date.now()}]`;
