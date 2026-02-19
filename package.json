@@ -1,6 +1,6 @@
 {
 	"name": "@lesjoursfr/bootstrap-context-menu",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Contextual Menu for Bootstrap.",
 	"license": "MIT",
 	"repository": {
@@ -61,7 +61,7 @@
 		"@types/bootstrap": "5.2.10",
 		"@types/node": "24.10.13",
 		"bootstrap": "5.3.8",
-		"css-loader": "7.1.3",
+		"css-loader": "7.1.4",
 		"css-minimizer-webpack-plugin": "7.0.4",
 		"eslint": "10.0.0",
 		"eslint-config-prettier": "10.1.8",
@@ -72,13 +72,13 @@
 		"prettier": "3.8.1",
 		"sass": "1.97.3",
 		"sass-loader": "16.0.7",
-		"stylelint": "17.2.0",
+		"stylelint": "17.3.0",
 		"stylelint-config-standard-scss": "17.0.0",
 		"terser-webpack-plugin": "5.3.16",
 		"ts-loader": "9.5.4",
 		"ts-node": "10.9.2",
 		"typescript": "5.9.3",
-		"typescript-eslint": "8.55.0",
+		"typescript-eslint": "8.56.0",
 		"webpack": "5.105.2",
 		"webpack-cli": "6.0.1",
 		"webpack-dev-server": "5.2.3"
