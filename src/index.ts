@@ -154,6 +154,11 @@ export class BootstrapContextMenu {
   }
 
   public hide(_event: PointerEvent): void {
+    // Check if the menu is already hidden
+    if (this.menuElement === undefined) {
+      return;
+    }
+
     // Destroy the Popper instance
     this.popperInstance!.destroy();
     this.popperInstance = undefined;
