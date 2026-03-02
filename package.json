@@ -51,7 +51,7 @@
 		"menu"
 	],
 	"dependencies": {
-		"@lesjoursfr/browser-tools": "^2.0.2"
+		"@lesjoursfr/browser-tools": "^2.0.3"
 	},
 	"devDependencies": {
 		"@eslint/js": "10.0.1",
@@ -59,14 +59,14 @@
 		"@popperjs/core": "2.11.8",
 		"@tsconfig/next": "2.0.6",
 		"@types/bootstrap": "5.2.10",
-		"@types/node": "24.10.15",
+		"@types/node": "24.11.0",
 		"bootstrap": "5.3.8",
 		"css-loader": "7.1.4",
 		"css-minimizer-webpack-plugin": "7.0.4",
 		"eslint": "10.0.2",
 		"eslint-config-prettier": "10.1.8",
 		"fs-extra": "11.3.3",
-		"globals": "17.3.0",
+		"globals": "17.4.0",
 		"mini-css-extract-plugin": "2.10.0",
 		"postcss": "8.5.6",
 		"prettier": "3.8.1",
