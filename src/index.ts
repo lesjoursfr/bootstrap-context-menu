@@ -57,7 +57,7 @@ export class BootstrapContextMenu {
     this.onHide = options.events?.hide?.bind(this);
     this.menuId = `id-${++bsContextMenuIdCounter}`;
 
-    on(root, `contextmenu.bs-ctx-menu.${this.menuId}`, (event: Event) => {
+    on(root, `contextmenu:bs-ctx-menu.${this.menuId}`, (event: Event) => {
       // Check if the target matches the selector or is a child of an element that matches the selector
       if (null === (event.target as HTMLElement).closest(this.selector)) {
         return;
@@ -120,7 +120,7 @@ export class BootstrapContextMenu {
     });
 
     // Add a click listener to the menu
-    on(this.menuElement, `click.bs-ctx-menu.${this.menuId}`, (event: Event) => {
+    on(this.menuElement, `click:bs-ctx-menu.${this.menuId}`, (event: Event) => {
       event.stopPropagation();
       event.preventDefault();
 
@@ -139,7 +139,7 @@ export class BootstrapContextMenu {
     });
 
     // Add click outside listener to close menu
-    on(root, `mousedown.bs-ctx-menu.${this.menuId}`, (event: Event) => {
+    on(root, `mousedown:bs-ctx-menu.${this.menuId}`, (event: Event) => {
       if (true === this.menuElement!.contains(event.target as HTMLElement)) {
         return;
       }
@@ -165,18 +165,18 @@ export class BootstrapContextMenu {
 
     // Remove mouse listeners for submenu items
     const submenuItems = this.menuElement!.querySelectorAll<HTMLElement>(".bs-ctx-has-submenu");
-    off(submenuItems, `mouseenter.bs-ctx-menu.${this.menuId}`);
-    off(submenuItems, `mouseleave.bs-ctx-menu.${this.menuId}`);
+    off(submenuItems, `mouseenter:bs-ctx-menu.${this.menuId}`);
+    off(submenuItems, `mouseleave:bs-ctx-menu.${this.menuId}`);
 
     // Remove the click listener from the menu element
-    off(this.menuElement!, `click.bs-ctx-menu.${this.menuId}`);
+    off(this.menuElement!, `click:bs-ctx-menu.${this.menuId}`);
 
     // Remove the menu element reference
     this.menuElement!.remove();
     this.menuElement = undefined;
 
     // Remove the global mousedown listener for this menu
-    off(root, `mousedown.bs-ctx-menu.${this.menuId}`);
+    off(root, `mousedown:bs-ctx-menu.${this.menuId}`);
 
     // Call the event callback if it exists
     if (this.onHide) {
@@ -215,10 +215,10 @@ export class BootstrapContextMenu {
         li.classList.add("bs-ctx-has-submenu");
 
         // Bind hover events to show/hide the submenu
-        on(li, `mouseenter.bs-ctx-menu.${this.menuId}`, () => {
+        on(li, `mouseenter:bs-ctx-menu.${this.menuId}`, () => {
           this.showSubMenu(li, item.items!);
         });
-        on(li, `mouseleave.bs-ctx-menu.${this.menuId}`, () => {
+        on(li, `mouseleave:bs-ctx-menu.${this.menuId}`, () => {
           this.hideSubMenu(li);
         });
       }
