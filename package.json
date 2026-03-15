@@ -51,7 +51,7 @@
 		"menu"
 	],
 	"dependencies": {
-		"@lesjoursfr/browser-tools": "^3.0.1"
+		"@lesjoursfr/browser-tools": "^3.0.2"
 	},
 	"devDependencies": {
 		"@eslint/js": "10.0.1",
@@ -67,14 +67,14 @@
 		"eslint-config-prettier": "10.1.8",
 		"fs-extra": "11.3.4",
 		"globals": "17.4.0",
-		"mini-css-extract-plugin": "2.10.0",
+		"mini-css-extract-plugin": "2.10.1",
 		"postcss": "8.5.8",
 		"prettier": "3.8.1",
-		"sass": "1.97.3",
+		"sass": "1.98.0",
 		"sass-loader": "16.0.7",
 		"stylelint": "17.4.0",
 		"stylelint-config-standard-scss": "17.0.0",
-		"terser-webpack-plugin": "5.3.17",
+		"terser-webpack-plugin": "5.4.0",
 		"ts-loader": "9.5.4",
 		"ts-node": "10.9.2",
 		"typescript": "5.9.3",
